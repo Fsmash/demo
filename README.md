@@ -41,6 +41,8 @@ and
     4. ctrl click the link that appears and you should see the cube demo of the threejs scene being 
        rendered
 
+    Skip to problem and question section if you don't need a verbose explanation of web development
+
 ### Overview (backend):
 
 I will give a brief overview of terms and the technologies used in modern web development. We all know that the basic components of a site is HTML, CSS, and Javascript. 
@@ -83,7 +85,7 @@ So **node** is what is responsible for running the Javascript that returns our *
 
 So our "vite" package is what is running and serving back our site to us. But how does it know exactly what to return back? Again, "packages.json". It is what holds the configuration for **node** and all the packages it is using to know exactly what to do.
 
-Now let us see what code is being returned back. Open "index.html" and "js/main.js" and look at what being displayed by the browser. It's just text? Yes. The code is being "interpreted" by the browser and "rendered" as a spinning cube. The nitty gritty that you shoud focus on is here for now. Understanding exactly what is happening. I will link resources at the bottom as well as a brief **frontend** overview.
+Now let us see what code is being returned back. Open "index.html" and "js/main.js" and look at what being displayed by the browser. This is the code is being "interpreted" by the browser and "rendered" as a spinning cube.
 
 So let's summarize what is going on. **node** is running code that is returning back our **static** site at the specified **endpoint**. In this way "vite" is acting as a server for us. Which is this page with the spinning cube. The code that **node** is running to do this is the "vite" **package** that we included with **npm**. Now let's go over the **frontend**. 
 
@@ -192,9 +194,11 @@ As promised here is a list of questions/problems that in increasing difficulty t
     After you run "npm run test" as long as you have it running any changes you make to the code 
     should update in the browser. Ctrl-c to kill vite.
 
+Q: Where is the Javascript code being included in the html? See anything special?
+
 Q: What is the difference between "primitive" types and **objects** in Javascript?
 
-Q: So I said "const" means that a variable reference is "immutable". But what about data? Can we make it to where "data" referred by a variable can't change? Like if we want something to always be 5. (Hint ties into above question and is a bit of a trick question)
+Q: So I said "const" means that a variable reference is "immutable". But what about data? Can we make it to where "data" referred to by a variable can't change? Like if we want something to always be 5. (Hint ties into above question and is a bit of a trick question)
 
 Q: So if we can have "const" data how do have data in an object "const"?
 
