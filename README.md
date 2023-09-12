@@ -106,7 +106,7 @@ This "modern" Javascript is being ran on the brower as **frontend** code.
 
 At the top with the "imports" we are just including in the code from the "threejs" package (known simply as "three"). 
 
-Next we see a bunch of **declarations**. We are defining the **state** of the program. At its simplest, a program define things to hold in memory and the operates on it. We are declaring them as "const" here as you can see. Another bit of "modern" Javascript here. What it means is that the variable can't be reassigned. It will always refer to the same thing. It is good practice to define things as "const" when we don't want certain things to not change in the **runtime** of our program.
+Next we see are defining the **state** of the program. At its simplest, a program define things to hold in memory and the operates on it. We are declaring them as "const" here as you can see. Another bit of "modern" Javascript here. What it means is that the variable can't be reassigned. It will always refer to the same thing. It is good practice to define things as "const" when we don't want certain things to not change in the **runtime** of our program.
 
 I said a bunch of stuff here that is important to understand on a programming fundamentals level. I haven't even gotten into what the code is doing yet but let's understand a little bit of how the code is doing what it is doing for a minute. Stepping into the **black box** a smidgen here. 
 
