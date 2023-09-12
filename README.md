@@ -114,11 +114,11 @@ In this context the **black box** that I am referring to is to how code typicall
 
 Again, let's break it down. A integral approach to programming. 
 
-**state**: Exactly what is it? Well simply put it is the "memory" of the program. Memory is constantly evolving and changing in the **runtime** of the program. The data loaded in by a program is changing and updating constantly if does anything intersting. 
+**state**: Exactly what is it? Well simply put it is the "memory" of the program. Memory is constantly evolving and changing in the **runtime** of the program if it does anything intersting. 
 
 **runtime**: The lifetime of the program. What is in memory and what is being done while the program is running. It ends when you close it. In this context when you close the tab or the browser. A lot of thought goes into here. Like efficiency and making sure that when you actually close the program it frees up any resources (memory, processes, etc.) that it was using. In our case here with Javascript, the browser should handle all this for us. Where the **frontend** code is being ran. 
 
-So tying in this with the context of our program with "const" we can see that it is saying that the memory that is referring to these **objects** can't be reassigned. The data is "immutable". Which is a fancy of saying can't be changed. Here is where the devil in the detail is.
+So tying in this with the context of our program with "const" we can see that it is saying that the memory that is referring to these **objects** can't be reassigned. The variable is "immutable". Which is a fancy of saying can't be changed. Here is where the devil in the detail is.
 
     "...the memory that is referring to these **objects** can't be reassigned."
 
@@ -128,7 +128,7 @@ Notice how I said "referring" explicitly. Variables reference a piece of memory.
 
 The blocks each have their own "address" that is unique to the data they hold. A variable in Javascript is just a way for us as programmers to ask the computer for blocks of to hold our data during the **runtime** of our program.
 
-So "const" is a way for us to specify that a variable will always refer to the same block of data in memory at an address. Again, **black box** so we'll leave it at here. 
+So "const" in Javascript is a way for us to specify that a variable will always refer to the same block of data in memory at an address. Again, **black box** so we'll leave it at here. 
 
 **object**: Objects in Javascript are a way for us to group a bunch of variables together under one "thing". Thing in this context refers the concept of "abstraction". A way of grouping relevant things together to accomplish something. Grouping variables (data) and functions (methods) together to accomplish something that it is all related to.
 
