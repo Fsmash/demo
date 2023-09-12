@@ -132,13 +132,13 @@ What are Javascript **primitives**? Everything not an **object** to keep it dead
 
 **primitives** are always assigned by value in Javascript. 
 
-[](./res/assign.png)
+![](./res/assign.png)
 
 When 'b' is assigned to 'a', it doesn't point to the same location in memeory (address). Instead it has it's own block of memory that has a copy of the value assigned to 'a', 1 in this case. Assignment is also where memory allocation can take place.
 
 **objects** are always assigned by reference. 
 
-[](./res/assign2.png)
+![](./res/assign2.png)
 
 'a' and 'b' both point to the same location in memory. Meaning, any changes you make to the object with 'b', it will be the same for 'a' because they are referring to the same thing just through different names. So if you update the array object with, 'b[0] = 2'. 'a[0]' will also be 2 now.
 
