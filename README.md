@@ -91,24 +91,22 @@ So let's summarize what is going on. **node** is running code that is returning 
 
 ### Overview (frontend):
 
-    TIP: Have this open side by side with you code. It can't be understated how helpful this is when
-         reading something that refers back to the code. 
+    TIP: Have this open side by side with the code. It can't be understated how helpful this is when
+         reading something that refers back to it.
 
-Inside the "js/main.js" file that you have open look at the top of the file. You should see the code that is declaring how we are using threejs. Threejs (three) is the package that we included in with **npm** that is rendering the cube with Javascript. If this syntax is a bit intimidating and doesn't look like the Javascript that you normally use that is fine. Javascript is a huge code ecosystem that is a huge bloated mess in my opinion. Meaning everyone has differing opinions on how to write Javascript so much so that a lot of different standards and approaches make it pretty much impossible to understand everything out there about it. 
+Inside the "js/main.js" file that you have open look at the top of the file. You should see the code that is including in threejs. Threejs (three) is the package that we included in with **npm** that is rendering the cube with Javascript. 
 
-So let's adopt this **black box** mentality again. Focus just what is in front of you. This code is what we would consider "modern" Javascript code. To a certain extent. Again, headache. But ignore the nerds on YouTube and Twitter. Let's just run with what we can break down and understand. 
+Let's adopt this **black box** mentality again. Focus just what is in front of you. This code is what we would consider "modern" Javascript code. So what makes this code "modern". Well a congregation of nerds decide on a standard for Javascript every other year. They propose changes and updates to Javascript that then different vendors (Mozilla, Google, Microsoft, etc.) then have to support. In this case, in the browser and with **node**.
 
-So what makes this code "modern". Well a congregation of nerds decide on a standard for Javascript every other year. They propose changes and updates to Javascript that then different vendors (Mozilla, Google, Microsoft, etc.) then have to support (at some point lol). In this case, in the browser and with **node**.
-
-So since we didn't write any **backend** code this "modern" Javascript is being ran on the brower as **frontend** code.
+This "modern" Javascript is being ran on the brower as **frontend** code.
 
 ![](./res/js.png)
 
-"import ..." at the top of the file is one of the most important things included in this "modern" Javascript standard. It is what is including in the "threejs" code that we grabbed from **npm**. A brief overview of this code you can see some "complicated" things happening. But let's break it down into sections.
+"import ..." at the top of the file is one of the most important things included in this "modern" Javascript standard. It is what is including in the "threejs" code that we grabbed from **npm**. A brief overview of this code you can see some "complicated" things happening.
 
 At the top with the "imports" we are just including in the code from the "threejs" package (known simply as "three"). 
 
-Next we see a bunch of **declarations**. We are declaring the **state** of the program. At its simplest, a program define things to hold in memory and the operates on it. We are declaring them as "const" here as you can see. Another bit of "modern" Javascript here. What it means is that the variable can't be reassigned. It will always refer to the same thing. It is good practice to define things as "const" when we don't want certain things to not change in the **runtime** of our program.
+Next we see a bunch of **declarations**. We are defining the **state** of the program. At its simplest, a program define things to hold in memory and the operates on it. We are declaring them as "const" here as you can see. Another bit of "modern" Javascript here. What it means is that the variable can't be reassigned. It will always refer to the same thing. It is good practice to define things as "const" when we don't want certain things to not change in the **runtime** of our program.
 
 I said a bunch of stuff here that is important to understand on a programming fundamentals level. I haven't even gotten into what the code is doing yet but let's understand a little bit of how the code is doing what it is doing for a minute. Stepping into the **black box** a smidgen here. 
 
@@ -140,19 +138,11 @@ Let's look at a concrete example. Look at the "const geometry" variable and what
 
 Now I will explain a little bit about what the code is actually doing a bit as it will help solidify this concept of abstraction. This "const geometry" variable is referring to this "BoxGeometry" object. "new" is the way we ask for a new chunk of memory to be allocated (given) to store all our "BoxGeometry" data. And the "THREE" is just the "namespace" it is under. Namespace is just a way of organizing code. We know explicitly that it is part of "threejs".
 
-What do you think "BoxGeometry" is for? I mean, unless someone is trying to mislead you or just bad a coding most times the names we give for **objects** usually refer to what they are doing. So without referring to the doc, let's try to assume what it is doing here. We can do it this time for the sake of understanding this concept of "abstraction". I'll allow it lol.
+What do you think "BoxGeometry" is for? I mean, unless someone is trying to mislead you or just bad a coding most times the names we give for **objects** usually refer to what they are for. So without referring to the doc, let's try to think about it. We can "assume" this time for the sake of understanding this concept of "abstraction".
 
-We can see what parameters (arguments) it takes in. It's all numbers. 1 to be exact. If we assume that "BoxGeometry" has to do with the geometry of the cube we are rendering then we can infer that it is specifying the dimensions of the cube. Width, length, and height. It's a three dimensional cube so that probably is it. It is. Check the doc. It's just not in that order lol. 
+We can see what parameters (arguments) it takes in. It's all numbers. 1 to be exact. If we assume that "BoxGeometry" has to do with the geometry of the cube we are rendering then we can infer that it is specifying the dimensions of the cube. Width, length, and height. It's a three dimensional cube so that probably is it. It is. Check the doc later to confirm.
 
-So we have an object that holds all the geometry data of the cube being rendered. It is reasonable to have an object just for this. Why? It "makes sense" to organze code this way. If we have to write a whole thing just to hold cube data every time we want a box shape it would be a bit much. All the relevant functions that operate on the geometry data of this box geometry data also is in this object. Something like "geometry.scaleWidth(5)" or something like it could reasonably be in this object that scales the width by multiplying the "width" variable in the **object** by 5. 
-
-This ties back into why we use variables. It is a shorthand descriptive way of referring back to the **object**. I know I said in the beginning assuming too early can be an issue but we can't help it. Just don't run with an assumption without confirming. With experience you end up being correct more often. Of course referring to the doc is a must but if we can reasonably assume some things like a function that should belong to the relevant **object** definition we know what to look for. In this case we can look for the scaling function that "BoxGeometry" should have. And it does. It's just not this "scaleWidth" name that I guessed at.
-
-But hey, then you can write your own function called that and calls the scale function to scale the width if you want. Why you would want to do so is up to you.
-
-    TIP: Never write functions mindlessly ahead of time. You'll recognize with experience when you would
-         want a function for something. Usually when you find yourself needing to repeat the same piece
-         of code again and again.
+So we have an object that holds all the geometry data of the cube being rendered. It is reasonable to have an object just for this. Why? It "makes sense" to organze code this way. If we have to write a whole thing just to hold cube data every time we want a box shape it would be a bit much. All the relevant functions that operate on the geometry data of this box geometry data also is in this object. Something like "geometry.scaleWidth(5)" or something like it could reasonably be in this object that scales the width by multiplying the "width" variable in the **object** by 5. Check at some point and see what you find.
 
 Okay, one last thing before we go over very very briefly what the code is doing. I swear. The concept of **scope**
 
@@ -161,6 +151,8 @@ Okay, one last thing before we go over very very briefly what the code is doing.
 The "global **scope**" is where everything in our program can access. Meaning all the variables. A scope in javascript is defined by curly brackets, "{}". This is why our functions have them. It allows us to define variables only within the scope of our function. Why? because it is only relevant within the function. This is a nice way of organizing and making code efficient. In Javascript and most programming languages, variables defined within a scope are not loaded into memory until they are used. This is the reason for this concept of **scope**. We want to organize our code to be readable but also we only want things loaded into memory when they are needed. We only want/need the variable when we use it in the scope of a function. 
 
 In our "main.js" everything is in the "global **scope**". This is fine for a small program like this where we don't have data that only needs to be in a certain **scope**. I'll give some problems at the end that will have you at some point adding variables only in a **scope**.
+
+So this all might seem intimidating but I would consider these core tenets of programming in Javascript and programming in general. A rough understanding is fine for now as it should solidify as you program with these concepts in mind. 
 
 ### Overview (the program)
 
@@ -218,11 +210,11 @@ P: Change the background color of the scene. The abyss is scary. Make it a brigh
 
 P: So I said **runtime** efficiency is a concern in programming. But we have code that check if the browser can support rendering. Isn't this a waste to define all this stuff if in the end we can't even show the cube? Make it so we check first so that we don't wastefully allocate anything if "WebGL" isn't supported. 
 
-Q: What is WebGL? Lol, might as well look into it.
+Q: What is WebGL?
 
 Q: What is threejs then?
 
-P: Cube be spinning. Let's have it change color every frame as well as it spins. Randomly xD for the lulz. Proabably want to use a different material that lets you change its color. Hint we have objects in objects. Meaning we have a cube "Mesh" object that has it's own variables that references the geometry and material we passed in as arguments. If you want to change the cube color you should reference the material object we passed in. You want to access variable color in material in the cube. Hint "cube.material.?". Also you probably need to add some lighting to the scene. Ambient should be fine. 
+P: Cube is spinning. Let's have it change color every frame as well as it spins. Randomly xD for the lulz. You want to use a different material that lets you change its color. Hint: we have objects in objects. Meaning we have a cube "Mesh" object that has it's own variables that references the geometry and material we passed in as arguments. If you want to change the cube color you should reference the material object we passed in. You want to access variable color in material in the cube. Hint "cube.material.?". Also you probably need to add some lighting to the scene. Ambient should be fine. 
 
 P: Instead of updating the color in the above way change the color by updating the "const material" we passed into the "Mesh" object.
 
@@ -244,12 +236,14 @@ P: Screw just spinning around. Can't really tell with a smoother surface if they
 
 P: Let's have them coodinated now like them olympic synchnoized swimmers. Orbit a center point and have them move in a circle evenly spaced out. It is math time. Wanna see all of them so pick the right plane (x, y, or z?) for them to be moving in.
 
-P: Okay, real big boy coding time. Biggest hurdle yet. Collision detection. This will be the wall to overcome. Have all spheres moving randomly about this correct plane you chose. But if they hit a side of the screen (renderer) have them bounce away. You are going to have to think about the screen space and the scene space and what that means.
+If you've noticed I've added more and more concepts with each problem and question. Diving deeper into an aspect of a **black box**. But always focusing back on how it is relevant to a problem. This is the approach to tackle programming problems. Identify the relevant **black boxes**, know what they do, and then when you need to dive deeper into them while keeping the focus narrowed on what you want to solve. 
+
+Below are hardest problems.
+
+P: Biggest hurdle yet. Collision detection. This will be the wall to overcome. Have all spheres moving randomly about this correct plane you chose. But if they hit a side of the screen have them bounce back. You are going to have to think about the screen space and the scene space and what that means. Vectors are another concept to understand and how to apply them. You can use a package but it is not necessary for simple collision detection like this with a sphere.
 
 P: Have the 10 spheres now have collision detection with each other as well. You should see them bouncing around off each other in the the box that is renderer.
 
-P: Last one. If you made it here you have programming down to a resonable degree but one last push can't hurt. Only 10 spheres bouncing around? Let's push it. See how many you can add till it starts slowing down. Threejs has a helper that adds a fps counter in the corner. Add that in. Now figure out a way to keep it a consistent frame rate. The exact number of spheres you can support is honestly not known. But you can definitely have more than 10. Look into shaders and maybe even limit the frame rate to 30 if you want even more spheres.
+P: Let's finally dive deeper into the build tools we used in this project. Open package.json. Understand it lol. A good portion is just descriptive stuff but there is a lot when it comes to dev setups. For now the basics is what is important. Add some packages for code linting and unit tests. Write a section in scripts for code linting. Write some unit tests in Javascript. It's fine if the tests are arbitrary. Add a script section to run unit tests.
 
-Q: Let's finally dive deeper into the build tools we used in this project. Open package.json. Understand it lol.
-
-If you wrapped this up then congrats. If you've noticed I've added more and more concepts with each problem and question. Diving deeper into an aspect of a **black box**. But always focusing back on how it is relevant to a problem. This is the approach to tackle programming problems. Identify the relevant **black boxes**, know what they do, and then when you need to dive deeper into them while keeping the focus narrowed on what you want to solve. 
+P: Last one. If you made it here you have programming in general down but one last push can't hurt. Only 10 spheres bouncing around? Let's see how many you can add till it starts slowing down. Threejs has a helper that adds a fps counter in the corner. Add that in. Now figure out a way to keep it a consistent frame rate. The exact number of spheres you can support is honestly not known. But you can definitely have more than 10. Maybe even limit the frame rate to 30. Think about Big O. Where is the programming doing the most work and look into how shaders can help you push rendering performance.
