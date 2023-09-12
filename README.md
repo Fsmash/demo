@@ -208,7 +208,7 @@ Q: let vs var. What is the difference? Ties into the concept of scope and declar
 
 Q: We don't define "document" in the Javascript code. Where is it from and what is it?
 
-Q: What are "domElements" and how do we "inject" the renderer into the HTML?
+Q: What are "domElements" and how do we "inject" the renderer into the HTML? (Look at main.js)
 
 Q: We call "animate" inside of the "animate" function. What is this called and how does it work?
 
@@ -222,9 +222,9 @@ Q: What is WebGL? Lol, might as well look into it.
 
 Q: What is threejs then?
 
-P: Cube be spinning. Let's have it change color every frame as well as it spins. Randomly xD for the lulz. Proabably want to use a different material that lets you change its color. Hint we have objects in objects. Meaning we have a cube "Mesh" object that has it's own variables that references the geometry and material we passed in as arguments. If you want to change the cube color you should reference the material object we passed in. You want to access variable color in material in the cube. Hint "cube.material.?"
+P: Cube be spinning. Let's have it change color every frame as well as it spins. Randomly xD for the lulz. Proabably want to use a different material that lets you change its color. Hint we have objects in objects. Meaning we have a cube "Mesh" object that has it's own variables that references the geometry and material we passed in as arguments. If you want to change the cube color you should reference the material object we passed in. You want to access variable color in material in the cube. Hint "cube.material.?". Also you probably need to add some lighting to the scene. Ambient should be fine. 
 
-P: Instead of updating the color in the above way change the color by updating the material we passed into the "Mesh" object.
+P: Instead of updating the color in the above way change the color by updating the "const material" we passed into the "Mesh" object.
 
 Q: Did it work? It did if you did it right. How?
 
