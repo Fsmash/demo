@@ -33,8 +33,7 @@ and
 
 ### To start:
 
-    1. cd into directory you wish to hold this project and 'git clone <repo>' replace <repo> with 
-       this repository.
+    1. Fork this repo and "git clone <repo>" where <repo> is of course your fork of this
     2. Run 'npm install' to install all the dependencies of this project which are only two packages
         a. threejs (three) 
         b. vite (vite)
