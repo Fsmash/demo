@@ -118,19 +118,35 @@ Again, let's break it down. A integral approach to programming.
 
 **runtime**: The lifetime of the program. What is in memory and what is being done while the program is running. It ends when you close it. In this context when you close the tab or the browser. A lot of thought goes into here. Like efficiency and making sure that when you actually close the program it frees up any resources (memory, processes, etc.) that it was using. In our case here with Javascript, the browser should handle all this for us. Where the **frontend** code is being ran. 
 
-So tying in this with the context of our program with "const" we can see that it is saying that the memory that is referring to these **objects** can't be reassigned. The variable is "immutable". Which is a fancy of saying can't be changed. Here is where the devil in the detail is.
+So a **const** variable is "immutable". Which means the variable that is referring to these **objects** in our code can't be reassigned during the whole **runtime**. It can't **reference** something else. Here is where the devil in the detail though.
 
-    "...the memory that is referring to these **objects** can't be reassigned."
-
-Notice how I said "referring" explicitly. Variables reference a piece of memory. If you think of your gamer RAM stick as blocks of memory this will make a lot more sense.
+Notice how I said **reference** explicitly. The variable aren't the **objects** in memory themselves, they point to them. Refer to them. If you have no way of referring to an **object**, they will be cleaned up by Javascript since there is no way of accessing their data so it would just go to waste. If you think of your gamer RAM stick as blocks of memory **references** will make a lot more sense.
 
 ![](./res/memory.png)
 
-The blocks each have their own "address" that is unique to the data they hold. A variable in Javascript is just a way for us as programmers to ask the computer for blocks of to hold our data during the **runtime** of our program.
+The blocks each have their own "address" that is unique that refers the location in memory they are located at. A variable is just a way for us as programmers to have names for these memory addresses that hold our data during the **runtime** of our program.
 
-So "const" in Javascript is a way for us to specify that a variable will always refer to the same block of data in memory at an address. Again, **black box** so we'll leave it at here. 
+In Javascript variables can always **reference** the same **object** but they never reference the same **primitive** in memory. Both boil down to data in memory but Javascript has distinct rules for how they are assigned to variables. To really hammer in this concept of **references** this is an important thing to note.
 
-**object**: Objects in Javascript are a way for us to group a bunch of variables together under one "thing". Thing in this context refers the concept of "abstraction". A way of grouping relevant things together to accomplish something. Grouping variables (data) and functions (methods) together to accomplish something that it is all related to.
+What are Javascript **primitives**? Everything not an **object** to keep it dead simple. These are strings, numbers, booleans, null, undefined, and symbols. 
+
+**primitives** are always assigned by value in Javascript. 
+
+[](./res/assign.png)
+
+When 'b' is assigned to 'a', it doesn't point to the same location in memeory (address). Instead it has it's own block of memory that has a copy of the value assigned to 'a', 1 in this case. Assignment is also where memory allocation can take place.
+
+**objects** are always assigned by reference. 
+
+[](./res/assign2.png)
+
+'a' and 'b' both point to the same location in memory. Meaning, any changes you make to the object with 'b', it will be the same for 'a' because they are referring to the same thing just through different names. So if you update the array object with, 'b[0] = 2'. 'a[0]' will also be 2 now.
+
+Yes, arrays are objects. If still confused see [here](https://dmitripavlutin.com/value-vs-reference-javascript/). Where I stole the images and should have a much better explanation. Which should also hopefully futher solidify the concept of "references" which is extremely important concept in programming.
+
+Let's flesh out this concept of **objects** here though.
+
+**Objects** in Javascript and in programming in general are a way for us to group a bunch of variables together under one "thing". Thing in this context refers to the concept of "abstraction". A way of grouping relevant things together to accomplish something. Grouping variables (data) and functions (methods) together to accomplish something that it is all related to.
 
 Let's look at a concrete example. Look at the "const geometry" variable and what **object** it is referring to.
 
@@ -140,7 +156,7 @@ Now I will explain a little bit about what the code is actually doing a bit as i
 
 What do you think "BoxGeometry" is for? I mean, unless someone is trying to mislead you or just bad a coding most times the names we give for **objects** usually refer to what they are for. So without referring to the doc, let's try to think about it. We can "assume" this time for the sake of understanding this concept of "abstraction".
 
-We can see what parameters (arguments) it takes in. It's all numbers. 1 to be exact. If we assume that "BoxGeometry" has to do with the geometry of the cube we are rendering then we can infer that it is specifying the dimensions of the cube. Width, length, and height. It's a three dimensional cube so that probably is it. It is. Check the doc later to confirm.
+We can see what parameters (arguments) it takes in. It's all numbers. 1 to be exact. If we assume that "BoxGeometry" has to do with the geometry of the cube we are rendering then we can infer that we are specifying the dimensions of the cube. That it has a width, length, and height variable being assigned here. Check the doc later to confirm but I'll just tell you yeah it does.
 
 So we have an object that holds all the geometry data of the cube being rendered. It is reasonable to have an object just for this. Why? It "makes sense" to organze code this way. If we have to write a whole thing just to hold cube data every time we want a box shape it would be a bit much. All the relevant functions that operate on the geometry data of this box geometry data also is in this object. Something like "geometry.scaleWidth(5)" or something like it could reasonably be in this object that scales the width by multiplying the "width" variable in the **object** by 5. Check at some point and see what you find.
 
@@ -188,11 +204,7 @@ As promised here is a list of questions/problems that in increasing difficulty t
 
 Q: Where is the Javascript code being included in the html? See anything special?
 
-Q: What is the difference between "primitive" types and **objects** in Javascript?
-
-Q: So I said "const" means that a variable reference is "immutable". But what about data? Can we make it to where "data" referred to by a variable can't change? Like if we want something to always be 5. (Hint ties into above question and is a bit of a trick question)
-
-Q: So if we can have "const" data how do have data in an object "const"?
+Q: What is the difference between **primitive** types and **objects** in Javascript?
 
 Q: What is the difference between defining and declaring a variable?
 
@@ -214,11 +226,13 @@ Q: What is WebGL?
 
 Q: What is threejs then?
 
-P: Cube is spinning. Let's have it change color every frame as well as it spins. Randomly xD for the lulz. You want to use a different material that lets you change its color. Hint: we have objects in objects. Meaning we have a cube "Mesh" object that has it's own variables that references the geometry and material we passed in as arguments. If you want to change the cube color you should reference the material object we passed in. You want to access variable color in material in the cube. Hint "cube.material.?". Also you probably need to add some lighting to the scene. Ambient should be fine. 
+P: Cube is spinning. Let's have it change color every frame as well as it spins. Randomly xD for the lulz. You want to use a different material that lets you change its color. Hint: we have objects in objects. Meaning we have a cube "Mesh" object that has it's own variables that references the geometry and material we passed in as arguments. If you want to change the cube color you should reference the material object we passed in. You want to access variable color in material in the cube. (Hint: "cube.material.?"). Also you probably need to add some lighting to the scene. Ambient should be fine. 
 
-P: Instead of updating the color in the above way change the color by updating the "const material" we passed into the "Mesh" object.
+    NOTE: Notice how we access the material object in cube.
 
-Q: Did it work? It did if you did it right. How?
+P: Instead of updating the color in the above way change the color by updating the "const material" color we passed into the "Mesh" object. "material.color"
+
+Q: Did it work? It did if you did it right. How? (Hint: Think back on what it means to assign by reference)
 
 P: Let's add more cubes. Have 10 spinning around in view. Have them all change to the same random color every frame. You'll need to put them in different positions. Keep them all in view. You can move the camera back a bit to do so. Remember size and position values are all relative. Meaning if something is 1 big having the camera a distance of 1000 away will make it tiny or even not even viewable. 
 
