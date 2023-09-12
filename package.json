@@ -1,0 +1,15 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "This is a demo project that shows the basic set up of \"modern\" web development with node, threejs, and vite. See readme for more details.",
+  "main": "index.html",
+  "scripts": {
+    "test": "npx vite"
+  },
+  "author": "Bryant Dinh",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.156.1",
+    "vite": "^4.4.9"
+  }
+}
