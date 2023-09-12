@@ -136,7 +136,7 @@ Let's look at a concrete example. Look at the "const geometry" variable and what
 
 ![](./res/object.png)
 
-Now I will explain a little bit about what the code is actually doing a bit as it will help solidify this concept of abstraction. This "const geometry" variable is referring to this "BoxGeometry" object. "new" is the way we ask for a new chunk of memory to be allocated (given) to store all our "BoxGeometry" data. And the "THREE" is just the "namespace" it is under. Namespace is just a way of organizing code. We know explicitly that it is part of "threejs".
+Now I will explain a little bit about what the code is actually doing a bit as it will help solidify this concept of abstraction. This "const geometry" variable is referring to this "BoxGeometry" object. "new" is the way we ask for a new chunk of memory to be allocated (given) to store all our "BoxGeometry" data. And the "THREE" is just the "namespace" it is under. Namespace is just a way of organizing code. We know explicitly that it is part of "threejs" and if we implement our own "BoxGeometry" for some reason they do not conflict with each other. Javascript will let you know if that happens. Namespaces are a way of avoiding that.
 
 What do you think "BoxGeometry" is for? I mean, unless someone is trying to mislead you or just bad a coding most times the names we give for **objects** usually refer to what they are for. So without referring to the doc, let's try to think about it. We can "assume" this time for the sake of understanding this concept of "abstraction".
 
@@ -180,7 +180,7 @@ For questions either ask me or
 
 ### Problems and Questions
 
-As promised here is a list of questions/problems that in increasing difficulty that should guide you. As you do each problem commit each solution to github. Each problem builds on the previous one so you won't be starting a new repo for each on. This way you can see your progress and github experience is good.
+As promised here is a list of questions/problems that in increasing difficulty that should guide you. As you do each problem commit each solution to github. Each problem builds on the previous one so you won't be starting a new repo for each on. This way you can see your progress and git experience is good. Questions are mainly there as things too look into and think about to understand the code.
 
     NOTE: Vite supports something called hot module replacement. Which is nice. 
     After you run "npm run test" as long as you have it running any changes you make to the code 
