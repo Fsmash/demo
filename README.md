@@ -185,6 +185,8 @@ And that's it. Devil is in the detail but again
 For questions either ask me or 
 [mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript) which has the best Javascript doc in my opinion. It is time to move past W3Schools.
 
+### Problems and Questions
+
 As promised here is a list of questions/problems that in increasing difficulty that should guide you. As you do each problem commit each solution to github. Each problem builds on the previous one so you won't be starting a new repo for each on. This way you can see your progress and github experience is good.
 
     NOTE: Vite supports something called hot module replacement. Which is nice. 
